@@ -1,7 +1,6 @@
 #include "Game.h"
 
 int main() {
-
     // Game engine
     Game game;
 

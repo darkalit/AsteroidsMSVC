@@ -6,7 +6,7 @@ Bullet::Bullet() {
 
 Bullet::Bullet(sf::CircleShape* shape, sf::Vector2f pos, sf::Vector2f direction, float speed) {
     this->shape                 = *shape;
-    this->shape.setPosition     (pos);
+    this->shape.setPosition      (pos);
     this->direction             = direction;
     this->speed                 = speed;
     this->initVars();

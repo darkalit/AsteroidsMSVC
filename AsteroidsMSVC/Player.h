@@ -48,4 +48,4 @@ public:
 };
 
 
-#endif //ASTEROIDSMSVC_PLAYER_H
+#endif

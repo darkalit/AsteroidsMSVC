@@ -29,20 +29,29 @@ Game::~Game() {
             delete j;
 }
 
+// Initializing window
 void Game::initWindow() {
+    // Width equal 2/3 of desktop; Height equals 3/4 of desktop
     this->videoMode.width = sf::VideoMode::getDesktopMode().width / 3 * 2;
     this->videoMode.height = this->videoMode.width * 3 / 4;
+    
+    // Naming the window
     this->window = new sf::RenderWindow(this->videoMode, "Asteroids",
         sf::Style::Titlebar | sf::Style::Close);
+
+    // Setting the frame limit
     this->window->setFramerateLimit(60);
 }
 
+// Check running status
 bool Game::running() const {
     return this->window->isOpen();
 }
 
+// Initializing some variables
 void Game::initVars() {
     this->window = nullptr;
+
     this->ships = 3;
     this->score = 0;
 
@@ -50,6 +59,7 @@ void Game::initVars() {
     this->gameDelayRelax = 0.f;
 
     this->attackf = true;
+
     this->AsteroidF = true;
     this->asteroidAngle = 0;
 
@@ -59,7 +69,7 @@ void Game::initVars() {
         for (auto& j : i.second)
             this->asteroidR[j] = 0;
 
-    this->playerInvis = true;
+    this->playerInvis = false;
     this->invisCooldown = 0;
     this->invisCooldownMax = 200;
 
@@ -89,6 +99,7 @@ void Game::initVars() {
         "Textures\\Asteroids\\Asteroid5.png"};
 }
 
+// Initializing textures
 void Game::initTextures() {
     this->shapes["bullet"] = new sf::CircleShape();
     this->shapes["bullet"]->setFillColor(sf::Color::White);
@@ -105,6 +116,7 @@ void Game::initTextures() {
     }
 }
 
+// Initializing text
 void Game::initText() {
     this->font.loadFromFile("Fonts\\Teko.ttf");
 
@@ -174,6 +186,7 @@ void Game::PollEvents() {
     }
 }
 
+// Update game events
 void Game::update() {
     this->gen.seed(rd());
     this->PollEvents();
@@ -197,7 +210,10 @@ void Game::update() {
 }
 
 void Game::updateAsteroids() {
+
+    // Creating 4 big asteroids around the player randomly
     if (this->AsteroidF) {
+        // Generating random coordinates for big asteroids
         std::vector<sf::Vector2f> rnd_pos(4);
         for (int i = 0; i != 4;) {
             int rnd_x = gen() % (this->videoMode.width - 50);
@@ -209,6 +225,7 @@ void Game::updateAsteroids() {
             }
         }
 
+        // Creating asteroids
         for (int i = 0; i != 4; ++i){
             this->asteroids["asteroidsB"].push_back(
                                         new Asteroid(*this->textures[this->textures_name[this->gen() % 5]], 0.25f,
@@ -220,18 +237,19 @@ void Game::updateAsteroids() {
         this->AsteroidF = false;
     }
 
+    // Spawn delay if there are no asteroids
     if (this->asteroids["asteroidsM"].empty() && 
         this->asteroids["asteroidsB"].empty() && 
         this->asteroids["asteroidsS"].empty()) {
         this->gameDelayRelax += 0.1f;
         std::cout << gameDelayRelax << std::endl;
     }
-    
     if (gameDelayRelax > 12.f) {
         this->gameDelayRelax = 0.f;
         this->AsteroidF = true;
     }
 
+    // Destroying asteroids and asteroids scrolling through window bounds
     for (auto& k : this->asteroids) {
         int c1 = 0;
         for (auto& i : k.second) {
@@ -290,10 +308,6 @@ void Game::updateAsteroids() {
             this->asteroidR[i] += this->asteroidRS[i];
         }
     }
-    //std::cout << " [" << this->asteroidRS[this->asteroids[0]] << "|"
-    //                  << this->asteroidRS[this->asteroids[1]] << "|"
-    //                  << this->asteroidRS[this->asteroids[2]] << "|"
-    //                  << this->asteroidRS[this->asteroids[3]] << "]" << std::endl;
 }
 
 void Game::updatePlayer() {
@@ -304,7 +318,7 @@ void Game::updatePlayer() {
     for (auto& i : this->asteroids)
         for (auto& j : i.second)
             if (!this->playerInvis)
-                if (/*this->player.getBounds().intersects(j->getBounds())*/
+                if (
                    (powf(this->player.getPos().x - j->getPos().x, 2) + 
                     powf(this->player.getPos().y - j->getPos().y, 2)) <= powf(j->getBounds().width/2, 2)) {
                     this->sounds["ship_destroyed"].play();
@@ -314,9 +328,8 @@ void Game::updatePlayer() {
                     this->ships--;
                     this->playerInvis = true;
                 }
-    //std::cout << "x:" << this->player.getPos().x << "|" << this->asteroids["asteroidsB"][0]->getPos().x << std::endl;
-    //std::cout << "y:" << this->player.getPos().y << "|" << this->asteroids["asteroidsB"][0]->getPos().y << std::endl;
 
+    // Player invisibility on asteroids hit
     if ((this->invisCooldown < this->invisCooldownMax) && (this->playerInvis))
         this->invisCooldown ++;
     else if (this->invisCooldown >= this->invisCooldownMax) {

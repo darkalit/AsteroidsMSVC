@@ -24,9 +24,6 @@ public:
 	sf::Vector2f			getPos()									override;
 	void					setPos(float x = 0, float y = 0)			override;
 
-	// Move object to the opposite screen side when crossing another side;
-	//void					screenMove(sf::VideoMode videoMode)			override;
-
 	// Angle and rotation manipulation;
 	void					Rotate(float angle)							override;
 
@@ -38,4 +35,4 @@ public:
 	void					update()									override;
 	void					render(sf::RenderTarget* target)			override;
 };
-#endif ASTEROIDS_ASTEROID_H
+#endif

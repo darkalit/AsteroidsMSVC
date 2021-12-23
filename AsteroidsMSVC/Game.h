@@ -13,47 +13,47 @@
 
 class Game {
 private:
-    sf::RenderWindow* window;
-    sf::VideoMode videoMode;
-    sf::Event event{};
+    sf::RenderWindow*   window;
+    sf::VideoMode       videoMode;
+    sf::Event           event{};
 
     sf::Font font;
     sf::Text scr_shps[4];
     sf::Text gameover;
 
-    int ships;
-    int score;
+    int     ships;
+    int     score;
 
-    bool attackf;
-    bool AsteroidF;
-    float asteroidAngle;
-    float gameDelayRelax;
+    bool    attackf;
+    bool    AsteroidF;
+    float   asteroidAngle;
+    float   gameDelayRelax;
 
-    bool gamepaused;
+    bool    gamepaused;
 
-    bool playerInvis;
-    int invisCooldown;
-    int invisCooldownMax;
+    bool    playerInvis;
+    int     invisCooldown;
+    int     invisCooldownMax;
 
-    int music_num;
+    int     music_num;
 
-    std::random_device rd;
-    std::mt19937 gen;
+    std::random_device                              rd;
+    std::mt19937                                    gen;
 
-    std::map<std::string, sf::SoundBuffer> soundBuffers;
-    std::map<std::string, sf::Sound> sounds;
-    std::map<int, sf::Music> music;
+    std::map<std::string, sf::SoundBuffer>          soundBuffers;
+    std::map<std::string, sf::Sound>                sounds;
+    std::map<int, sf::Music>                        music;
 
-    std::vector<std::string> AsTexDirectories;
+    std::vector<std::string>                        AsTexDirectories;
 
-    std::map<std::string, sf::CircleShape*> shapes;
-    std::vector<Bullet*> bullets;
+    std::map<std::string, sf::CircleShape*>         shapes;
+    std::vector<Bullet*>                            bullets;
 
-    std::map<std::string, sf::Texture*> textures;
-    std::vector<std::string> textures_name;
-    std::map<std::string, std::vector<Asteroid*>> asteroids;
-    std::map<Asteroid*, float> asteroidRS;
-    std::map<Asteroid*, float> asteroidR;
+    std::map<std::string, sf::Texture*>             textures;
+    std::vector<std::string>                        textures_name;
+    std::map<std::string, std::vector<Asteroid*>>   asteroids;
+    std::map<Asteroid*, float>                      asteroidRS;
+    std::map<Asteroid*, float>                      asteroidR;
 
     void initVars();
     void initTextures();
@@ -80,4 +80,4 @@ public:
 };
 
 
-#endif //SFML_T_GAME_H
+#endif

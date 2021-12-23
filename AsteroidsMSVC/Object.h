@@ -23,7 +23,7 @@ public:
 	virtual sf::Vector2f	getPos			()							= 0;
 	virtual void			setPos			(float x=0, float y=0)		= 0;
 
-	// Move object to the opposite screen side when crossing another side;
+	// Object scrolling through window borders
 	virtual void			screenMove		(sf::VideoMode videoMode);
 
 	// Angle and rotation manipulation;
@@ -33,7 +33,7 @@ public:
 
 	// Get direction vector of moving object;
 	virtual sf::Vector2f	getDirection	()							= 0;
-	virtual const sf::FloatRect     getBounds()                   const = 0;
+	virtual const sf::FloatRect    getBounds()				      const = 0;
 
 	// Update state of object and render it; 
 	virtual void			update			()							= 0;

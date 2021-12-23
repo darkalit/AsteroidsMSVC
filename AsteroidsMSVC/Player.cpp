@@ -105,10 +105,6 @@ void Player::Rotate(float angle) {
     this->body.setRotation          (angle);
 }
 
-//void Player::setDirection(sf::Vector2f vector) {
-//    this->direction = vector;
-//}
-
 // Get vector of player's direction
 sf::Vector2f Player::getDirection() {
     sf::Vector2f     direction_;

@@ -1,5 +1,6 @@
 #include "Functions.h"
 
+
 float Q_rsqrt(float number) {
     long i;
     float x2, y;

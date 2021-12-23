@@ -30,5 +30,5 @@ float Object::getAngle()
 
 void Object::setAngle(float angle)
 {
-    this->angle         = angle;
+    this->angle       = angle;
 }

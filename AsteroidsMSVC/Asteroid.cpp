@@ -25,6 +25,7 @@ sf::Vector2f Asteroid::getPos()
 
 void Asteroid::setPos(float x, float y)
 {
+	// idk why I put -20.f to x
 	this->shape.setPosition(x-20.f, y);
 }
 
