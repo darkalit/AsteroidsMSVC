@@ -1,4 +1,4 @@
-# AsteroidsMSVC
+# AsteroidsMSVC (!!!Requires SFML 2.5!!!)
 This game was made just for practicing in C++. Just copied gameplay of Asteroids on Atari
 
 ![AsteroidsMSVCimage1](/Screenshots/scrn1.png)
