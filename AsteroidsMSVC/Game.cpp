@@ -118,7 +118,7 @@ void Game::initTextures() {
 
 // Initializing text
 void Game::initText() {
-    this->font.loadFromFile("Fonts\\Teko.ttf");
+    this->font.loadFromFile("Fonts/Teko.ttf");
 
     for (int i = 0; i != 4; ++i) {
         scr_shps[i].setFont(font);
