@@ -242,8 +242,8 @@ void Game::updateAsteroids() {
         this->asteroids["asteroidsB"].empty() && 
         this->asteroids["asteroidsS"].empty()) {
         this->gameDelayRelax += 0.1f;
-        std::cout << gameDelayRelax << std::endl;
     }
+    
     if (gameDelayRelax > 12.f) {
         this->gameDelayRelax = 0.f;
         this->AsteroidF = true;
@@ -313,8 +313,7 @@ void Game::updateAsteroids() {
 void Game::updatePlayer() {
     this->player.update();
     this->player.screenMove(this->videoMode);
-    
-    //
+
     for (auto& i : this->asteroids)
         for (auto& j : i.second)
             if (!this->playerInvis)
