@@ -73,17 +73,17 @@ void Game::initVars() {
     this->invisCooldown = 0;
     this->invisCooldownMax = 200;
 
-    this->soundBuffers["shoot"].loadFromFile("Sounds\\Effects\\shot.wav");
+    this->soundBuffers["shoot"].loadFromFile("Sounds/Effects/shot.wav");
     this->sounds["shoot"].setBuffer(this->soundBuffers["shoot"]);
 
-    this->soundBuffers["ship_destroyed"].loadFromFile("Sounds\\Effects\\ship_destroyed.wav");
+    this->soundBuffers["ship_destroyed"].loadFromFile("Sounds/Effects/ship_destroyed.wav");
     this->sounds["ship_destroyed"].setBuffer(this->soundBuffers["ship_destroyed"]);
 
-    this->soundBuffers["asteroid_destroyed"].loadFromFile("Sounds\\Effects\\asteroid_destroyed.wav");
+    this->soundBuffers["asteroid_destroyed"].loadFromFile("Sounds/Effects/asteroid_destroyed.wav");
     this->sounds["asteroid_destroyed"].setBuffer(this->soundBuffers["asteroid_destroyed"]);
 
     for (int i = 1; i < 6; ++i) {
-        this->music[i - 1].openFromFile("Sounds\\Music\\" + std::to_string(i) + ".ogg");
+        this->music[i - 1].openFromFile("Sounds/Music/" + std::to_string(i) + ".ogg");
         this->music[i - 1].setVolume(10);
     }
 
@@ -92,11 +92,11 @@ void Game::initVars() {
     this->music[this->music_num].play();
 
     this->AsTexDirectories = { 
-        "Textures\\Asteroids\\Asteroid1.png", 
-        "Textures\\Asteroids\\Asteroid2.png",
-        "Textures\\Asteroids\\Asteroid3.png", 
-        "Textures\\Asteroids\\Asteroid4.png",
-        "Textures\\Asteroids\\Asteroid5.png"};
+        "Textures/Asteroids/Asteroid1.png",
+        "Textures/Asteroids/Asteroid2.png",
+        "Textures/Asteroids/Asteroid3.png",
+        "Textures/Asteroids/Asteroid4.png",
+        "Textures/Asteroids/Asteroid5.png"};
 }
 
 // Initializing textures
